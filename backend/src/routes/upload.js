@@ -13,7 +13,7 @@ router.post("/", requireAdmin, (req, res) => {
     if (!req.file) {
       return res.status(400).json({ error: "Tidak ada file yang diunggah." });
     }
-    const url = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    const url = `/uploads/${req.file.filename}`;
     res.status(201).json({ url, filename: req.file.filename });
   });
 });

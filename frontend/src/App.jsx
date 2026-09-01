@@ -5,7 +5,7 @@ import {
 } from "recharts";
 
 // ---------- API ----------
-const API_BASE = "http://localhost:4000/api";
+const API_BASE = "/api";
 
 async function apiRequest(path, { method = "GET", token, body } = {}) {
   const res = await fetch(`${API_BASE}${path}`, {
@@ -225,7 +225,7 @@ function Home({ go, data }) {
         <div style={{ padding: "2.5rem 0", borderTop: `0.5px solid ${theme.line}` }}>
           <SectionHeading eyebrow="Kata Sambutan" title="Sambutan Kepala Desa" />
           <div style={{ display: "flex", gap: 20, alignItems: "flex-start", background: theme.panel, border: `0.5px solid ${theme.line}`, borderRadius: 14, padding: "1.5rem" }}>
-            <Avatar name={data.sambutan.nama_kepala_desa} url={data.sambutan.foto_url} size={256} />
+            <Avatar name={data.sambutan.nama_kepala_desa} url={data.sambutan.foto_url} size={64} />
             <div>
               <p style={{ fontSize: 14.5, color: theme.textSoft, lineHeight: 1.75, margin: "0 0 12px", fontStyle: "italic" }}>“{data.sambutan.pesan}”</p>
               <p style={{ fontSize: 14, fontWeight: 500, margin: 0 }}>{data.sambutan.nama_kepala_desa}</p>
@@ -254,7 +254,7 @@ function Home({ go, data }) {
             {data.profil.struktur.map((s, i) => (
               <div key={i} style={{ background: theme.panel, border: `0.5px solid ${theme.line}`, borderRadius: 14, padding: "1.1rem", textAlign: "center" }}>
                 <div style={{ display: "flex", justifyContent: "center", marginBottom: 10 }}>
-                  <Avatar name={s.nama || s.jabatan} url={s.foto_url} size={128} />
+                  <Avatar name={s.nama || s.jabatan} url={s.foto_url} />
                 </div>
                 <p style={{ margin: 0, fontSize: 13.5, fontWeight: 500 }}>{s.nama || "—"}</p>
                 <p style={{ margin: "2px 0 0", fontSize: 12, color: theme.textSoft }}>{s.jabatan}</p>
@@ -521,7 +521,7 @@ function Belanja({ produk }) {
           const waLink = buildWaLink(p.nomor_wa, p.name, p.harga);
           return (
             <div key={p.id} style={{ background: theme.panel, border: `0.5px solid ${theme.line}`, borderRadius: 14, overflow: "hidden" }}>
-              <div style={{ height: 330, background: theme.goldSoft, backgroundImage: p.foto_url ? `url(${p.foto_url})` : undefined, backgroundSize: "cover", backgroundPosition: "center" }} />
+              <div style={{ height: 110, background: theme.goldSoft, backgroundImage: p.foto_url ? `url(${p.foto_url})` : undefined, backgroundSize: "cover", backgroundPosition: "center" }} />
               <div style={{ padding: "1rem" }}>
                 <p style={{ fontSize: 14.5, fontWeight: 500, margin: "0 0 4px", color: theme.text }}>{p.name}</p>
                 <p style={{ fontSize: 12, color: theme.textSoft, margin: "0 0 10px" }}>{p.umkm}</p>
